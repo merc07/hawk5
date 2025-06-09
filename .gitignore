@@ -1,0 +1,12 @@
+obj/
+bin/
+src/external/printf/
+src/external/CMSIS_5/
+.vsconfig/
+.vscode/
+.clangd/
+.DS_Store
+
+*.log
+*.log.bak
+__pycache__/
