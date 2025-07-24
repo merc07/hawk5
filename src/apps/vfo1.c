@@ -281,7 +281,16 @@ void VFO1_render(void) {
 
   if (gSettings.iAmPro) {
     uint32_t lambda = 29979246 / (ctx->frequency / 100);
-    PrintSmallEx(0, BASE - 14, POS_L, C_FILL, "L=%u/%ucm", lambda, lambda / 4);
+    if (lambda>99) {
+      PrintSmallEx(0, BASE - 18, POS_L, C_FILL, "F: %d.%02dm", lambda/100,lambda%100);
+    } else {
+      PrintSmallEx(0, BASE - 18, POS_L, C_FILL, "F: %ucm", lambda);
+    }
+    if ((lambda/4)>99) {
+      PrintSmallEx(0, BASE - 12, POS_L, C_FILL, "Q: %d.%02dm", lambda/4/100,lambda/4%100);
+    } else {
+      PrintSmallEx(0, BASE - 12, POS_L, C_FILL, "Q: %ucm", lambda / 4);
+    }
   }
 
   if (gMonitorMode) {
