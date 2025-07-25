@@ -116,6 +116,9 @@ void UI_Scanlists(uint8_t baseX, uint8_t baseY, uint16_t sl) {
 
 void UI_DrawLoot(const Loot *loot, uint8_t x, uint8_t y, TextPos pos) {
   char c = ' ';
+  if (loot->open && y==LCD_HEIGHT-1) {
+    c = '*';
+  }
   if (loot->blacklist) {
     c = '-';
   }
@@ -124,7 +127,7 @@ void UI_DrawLoot(const Loot *loot, uint8_t x, uint8_t y, TextPos pos) {
   }
 
   PrintMediumEx(x, y, pos, C_INVERT, "%c%u.%05u %c", c, loot->f / MHZ,
-                loot->f % MHZ, loot->open ? '!' : ' ');
+                loot->f % MHZ, loot->open ? '*' : ' ');
 }
 
 void UI_BigFrequency(uint8_t y, uint32_t f) {
